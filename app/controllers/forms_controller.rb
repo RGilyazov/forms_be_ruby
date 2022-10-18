@@ -19,10 +19,12 @@ class FormsController < ApplicationController
 
   def set_nested
      params[:values_attributes] = params.delete(:values)
-     params[:form_template_id] = params.delete(:formTemplate)
-     params[:values_attributes].each do |param|
-           param[:form_field_id] = param.delete(:formField)
-           param[:list_value_id] = param.delete(:listValue)
+     params[:form_template_id] = params.delete(:template)
+     if params[:values_attributes] 
+      params[:values_attributes].each do |param|
+            param[:form_field_id] = param.delete(:formField)
+            param[:list_value_id] = param.delete(:listValue)
+      end
      end
   end
 end

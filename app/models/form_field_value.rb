@@ -1,5 +1,5 @@
-class FormFieldValue < ApplicationRecord
+class FormFieldValue < DeleteNestedActiveRecord
      belongs_to :form, inverse_of: :values
-     has_one :form_field
+     belongs_to :form_field
      has_one :list_value
 end

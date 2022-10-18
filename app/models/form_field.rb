@@ -1,7 +1,8 @@
 class FormField < DeleteNestedActiveRecord
-    enum fieldType: [ :string, :number, :list ]
+    enum fieldType: [ :ST, :NU, :LS ]
     belongs_to :form_template, inverse_of: :fields
     has_many :values, dependent: :destroy, class_name: :ListValue, foreign_key: :form_field_id, autosave: true , inverse_of: :form_field
+    has_many :form_values,dependent: :destroy, class_name: :FormFieldValue, foreign_key: :form_field_id,inverse_of: :form_field
     accepts_nested_attributes_for :values, allow_destroy: true
     validates :fieldType, :form_template, :name, presence: true
     validates :name, length: {minimum: 3}
@@ -13,5 +14,6 @@ class FormField < DeleteNestedActiveRecord
         options[:include].push(:values)
         super.except("created_at", "updated_at")
     end
+   
 
 end

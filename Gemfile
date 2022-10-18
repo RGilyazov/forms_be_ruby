@@ -46,3 +46,5 @@ end
 gem "debug", require: false
 
 gem 'tzinfo-data'
+
+gem 'active_model_serializers' 

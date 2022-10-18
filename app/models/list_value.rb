@@ -1,4 +1,4 @@
-class ListValue < ApplicationRecord
+class ListValue < DeleteNestedActiveRecord
     belongs_to :form_field, inverse_of: :values
     validates :form_field, :value, presence: true
     def as_json(*)
